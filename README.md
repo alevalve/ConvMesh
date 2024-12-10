@@ -1,7 +1,5 @@
 # ConvMesh
 
-**GitHub Repository**: [ConvMesh](https://github.com/alevalve/ConvMesh.git)
-
 ## Overview
 
 **ConvMesh** is a Python-based framework that uses convex optimization and PyTorch3D to process and optimize 3D meshes. The project includes two main functionalities:
