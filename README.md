@@ -16,6 +16,7 @@
 - `generate_mesh.py`: Implements deformable mesh optimization and rendering with PyTorch3D.
 - `README.md`: Project documentation.
 - `requirements.txt`: List of dependencies required for running the project.
+- `dolphin.obj`: Dolphin mesh from Facebook AI.
 
 ---
 
