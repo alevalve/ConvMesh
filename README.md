@@ -5,8 +5,8 @@
 ## Overview
 
 **ConvMesh** is a Python-based framework that uses convex optimization and PyTorch3D to process and optimize 3D meshes. The project includes two main functionalities:
-1. **Improved Mesh Optimization**: Refines a source mesh to match a target mesh using convex optimization techniques.
-2. **Generate Mesh**: Deforms and renders 3D meshes with loss-based optimization using PyTorch3D.
+1. **Generate Mesh**: Deforms and renders 3D meshes with loss-based optimization using PyTorch3D.
+2. **Improved Mesh Optimization**: Refines a source mesh to match a target mesh using convex optimization techniques.
 
 ---
 
@@ -66,7 +66,27 @@ pip install pytorch3d
 
 ## Usage
 
-### 1. Improved Mesh Optimization (`improved_mesh.py`)
+### 1. Generate Mesh (`generate_mesh.py`)
+
+This script deforms a 3D mesh using PyTorch3D's loss-based optimization and renders the output.
+
+#### Example Command
+
+```bash
+python generate_mesh.py --target_mesh path/to/target.obj --output_mesh path/to/generated.obj --loss_output path/to/loss.csv --device cpu
+```
+
+#### Parameters
+
+- `--target_mesh`: Path to the target `.obj` mesh file.
+- `--output_mesh`: Path to save the generated mesh.
+- `--loss_output`: Path to save loss values as a CSV (optional).
+- `--device`: Device to use (`cpu` or `cuda`).
+- Other parameters include optimization weights (`--w_chamfer`, `--w_edge`, `--w_normal`, `--w_laplacian`).
+
+---
+
+### 2. Improved Mesh Optimization (`improved_mesh.py`)
 
 This script refines a source mesh to align with a target mesh using convex optimization.
 
@@ -88,30 +108,10 @@ python improved_mesh.py --raw_mesh path/to/raw.obj --target_mesh path/to/target.
 
 ---
 
-### 2. Generate Mesh (`generate_mesh.py`)
-
-This script deforms a 3D mesh using PyTorch3D's loss-based optimization and renders the output.
-
-#### Example Command
-
-```bash
-python generate_mesh.py --target_mesh path/to/target.obj --output_mesh path/to/generated.obj --loss_output path/to/loss.csv --device cpu
-```
-
-#### Parameters
-
-- `--target_mesh`: Path to the target `.obj` mesh file.
-- `--output_mesh`: Path to save the generated mesh.
-- `--loss_output`: Path to save loss values as a CSV (optional).
-- `--device`: Device to use (`cpu` or `cuda`).
-- Other parameters include optimization weights (`--w_chamfer`, `--w_edge`, `--w_normal`, `--w_laplacian`).
-
----
-
 ## Example Workflow
 
-1. Optimize a raw mesh using `improved_mesh.py`.
-2. Use the optimized mesh as input to `generate_mesh.py` for further deformation or rendering.
+1. Build a raw mesh from a sphere to approximate an already well-structured mesh using `generate_mesh.py`.
+2. Optimize a raw mesh using `improved_mesh.py`.
 
 ---
 
